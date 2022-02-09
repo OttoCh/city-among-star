@@ -3,5 +3,13 @@
   width: 100%;
   height: 100%;
   position: absolute;
+}
+
+.main {
   background-color: black;
+  /* https://stackoverflow.com/questions/3970455/how-to-make-the-overflow-css-property-work-with-hidden-as-value */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

@@ -6,11 +6,14 @@ import styled from "styled-components";
 import Star from './Star.js';
 import StarMain from './Star.png';
 import StarMain2 from './Star2.png';
+import StarMain3 from './Star3.png';
+import StarMain4 from './Star4.png';
+import StarMain5 from './Star5.png';
 import StarBG from './StarBG.jpg';
 
 import Background from './Background.js';
 
-const starImgPath = [ StarMain, StarMain2 ]
+const starImgPath = [ StarMain, StarMain2, StarMain3, StarMain4, StarMain5 ]
 let currentImgIndex = 0;
 
 export class Chapter0 extends Component {
@@ -47,10 +50,9 @@ export class Chapter0 extends Component {
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            if(currentImgIndex === 0) currentImgIndex = 1;
-            else currentImgIndex = 0;
+            currentImgIndex = this.getRandomInt(0,starImgPath.length-1);
             this.setState({starImg: "url(" + starImgPath[currentImgIndex] + ")"})
-        }, 500)
+        }, 300)
     }
 
     componentWillUnmount() {
@@ -61,7 +63,7 @@ export class Chapter0 extends Component {
     render() {
 
         return(
-            <div>
+            <div className='main'>
             <Background 
                 bgImage={this.state.bgImage} 
                 starTimer={this.state.starTimer}>
