@@ -13,14 +13,16 @@ const StarMain = styled(motion.div)`
     display: block;
     background-size: 100% 100%;
     background-image: ${passed => passed.starimg};
+    opacity: 1;
 `
 
 function Star(props) {
     return(
         <StarMain 
+        className={props.className}
         starimg={props.starImg}
         animate={{ y: [-500, 0] }}
-        transition={{ duration: 8 }}  
+        transition={{ duration: props.starTimer }}  
         ></StarMain>
     )
 

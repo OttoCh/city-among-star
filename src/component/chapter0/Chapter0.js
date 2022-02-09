@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import styled from "styled-components";
 
 
@@ -8,17 +8,10 @@ import StarMain from './Star.png';
 import StarMain2 from './Star2.png';
 import StarBG from './StarBG.jpg';
 
-const Background = styled.div`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    /* background-image: url(${StarBG}); */
-`
+import Background from './Background.js';
 
 const starImgPath = [ StarMain, StarMain2 ]
+let currentImgIndex = 0;
 
 export class Chapter0 extends Component {
 
@@ -26,7 +19,24 @@ export class Chapter0 extends Component {
         super(props)
         this.state = {
             starImg: "url(" + starImgPath[0] + ")",
+            starTimer: 8,
+            bgImage: "url(" + StarBG + ")",
         }
+        // setTimeout(this.setStarBackground, this.state.starTimer * 1000) ;
+        // controls = useAnimation();
+    }
+
+    setStarBackground = () => {
+        // //do the start animation
+        // //https://www.framer.com/docs/animation/##sequencing
+        // const bgImage = "url(" + StarBG + ")"
+        // controls.start({
+        //     initial: { opacity: 0 },
+        //     animate: { opacity: 1 },
+        //     backgroundImage: bgImage,
+        //     transition: { duration: 3 },
+        // })
+
     }
 
     getRandomInt = (min, max) => {
@@ -37,8 +47,9 @@ export class Chapter0 extends Component {
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            let i = this.getRandomInt(0, 1)
-            this.setState({starImg: "url(" + starImgPath[i] + ")"})
+            if(currentImgIndex === 0) currentImgIndex = 1;
+            else currentImgIndex = 0;
+            this.setState({starImg: "url(" + starImgPath[currentImgIndex] + ")"})
         }, 500)
     }
 
@@ -48,12 +59,19 @@ export class Chapter0 extends Component {
 
 
     render() {
+
         return(
-            <Background>
-                <Star 
-                    starImg = {this.state.starImg}  
-                ></Star>
+            <div>
+            <Background 
+                bgImage={this.state.bgImage} 
+                starTimer={this.state.starTimer}>
+
             </Background>
+            <Star 
+                starImg={this.state.starImg} 
+                starTimer={this.state.starTimer}
+            ></Star>
+            </div>
         )
     }
 }
