@@ -18,21 +18,31 @@ const BackgroundMain = styled(motion.div)`
 function Background(props) {
     const controls = useAnimation();
 
-    useEffect(() => {
-        controls.start(i => ({
+    const sequence = async () => {
+        await controls.start({
             opacity: 1,
-            y: [null, -500, -800],
             transition: {
                 delay: props.starTimer + 1,
-                duration: 3,
-                times: [0, 0.5, 1]
+                duration: 3
             },
-        }))
+        })
+        return await controls.start({ 
+            y: -1080,
+            transition: {
+                delay: 1,
+                duration: 4
+            }
+        })
+    }
+
+    useEffect(() => {
+        sequence();
     }, [])
 
     return(
         <BackgroundMain
             bgimage={props.bgImage}
+            
             animate={controls}
         >
         </BackgroundMain>
