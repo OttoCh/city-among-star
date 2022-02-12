@@ -6,6 +6,7 @@ const BackgroundMain = styled(motion.div)`
     position: absolute;
     display: flex;
     justify-content: center;
+    top: 100%;
     width: 100%;
     height: 100%;
     background-color: black;
@@ -14,12 +15,11 @@ const BackgroundMain = styled(motion.div)`
     background-image: ${passed => passed.bgimage};
     background-size: contain;
     /* overflow: hidden; */
-    opacity: 0;
+    opacity: 1;
 `
 
-function Background(props) {
+function Background2(props) {
     const controls = useAnimation();
-
     const sequence = async () => {
         await controls.start({
             opacity: 1,
@@ -29,7 +29,7 @@ function Background(props) {
             },
         })
         return await controls.start({ 
-            top: "-100%",
+            top: 0,
             transition: {
                 delay: 1,
                 duration: 4
@@ -50,4 +50,4 @@ function Background(props) {
     )
 }
 
-export default Background;
+export default Background2;
