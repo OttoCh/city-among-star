@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { motion, useAnimation } from 'framer-motion'
-import styled from "styled-components";
-
 
 import Star from './Star.js';
 import StarMain from './Star.png';
@@ -11,9 +8,11 @@ import StarMain4 from './Star4.png';
 import StarMain5 from './Star5.png';
 import StarBG from './StarBG.jpg';
 import StarBG2 from './StarBG2.jpg';
+import TitleImg from './Title.png';
 
 import Background from './Background.js';
 import Background2 from './Background2.js';
+import Title from './Title.js';
 
 const starImgPath = [ StarMain, StarMain2, StarMain3, StarMain4, StarMain5 ]
 let currentImgIndex = 0;
@@ -21,6 +20,7 @@ let currentImgIndex = 0;
 const StarTimer = 2;
 const Bg1Timer = StarTimer + 1;
 const Bg2Timer = StarTimer + 4
+const TitleTimer = Bg2Timer + 1;
 
 export class Chapter0 extends Component {
 
@@ -33,6 +33,8 @@ export class Chapter0 extends Component {
             bg2Timer: Bg2Timer,
             bgImage: "url(" + StarBG + ")",
             bgImage2: "url(" + StarBG2 + ")",
+            titleImage: "url(" + TitleImg + ")",
+            titleTimer: TitleTimer,
         }
         // setTimeout(this.setStarBackground, this.state.starTimer * 1000) ;
         // controls = useAnimation();
@@ -86,6 +88,11 @@ export class Chapter0 extends Component {
                 starImg={this.state.starImg} 
                 starTimer={this.state.starTimer}
             ></Star>
+            <Title
+                bgImage={this.state.titleImage}
+                timer={this.state.titleTimer}
+            >
+            </Title>
             </div>
         )
     }
