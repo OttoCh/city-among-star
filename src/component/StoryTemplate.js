@@ -38,6 +38,23 @@ function StoryTemplate(props) {
 
     const controls = useAnimation();
 
+    const variants = {
+        hidden: {
+            opacity: 0,
+            transition: {
+                delay: 0.2,
+                duration: 0.5,
+            }
+        },
+        visible: {
+            opacity: 1,
+            transition: {
+                delay: 0.5,
+                duration: 0.5,
+            }
+        }
+    }
+
     const sequence = async() => {
         return await controls.start({
             opacity: 1,
@@ -52,17 +69,27 @@ function StoryTemplate(props) {
         sequence();
     })
 
+    console.log(props)
+
     return(
         <BackgroundMain 
             onClick={props.onNextDialog}
             bgimage={"url(" + props.background + ")"}
             animate={controls}
         >
-            <NarrativeMain
-                dialogalign={props.dialogAlign}
-            >
-                {props.dialog}
-            </NarrativeMain>
+            {props.dialog.map(( text, i) => (
+                <NarrativeMain
+                    dialogalign={props.dialogAlign}
+                    variants={variants}
+                    initials="hidden"
+                    animate= {props.activeDialog === i ? "visible" : "hidden"}
+                    // animate="visible"
+                    key={i + "sam"}
+                >
+                    {text}
+                </NarrativeMain>
+            ))}
+
         </BackgroundMain>
     )
 

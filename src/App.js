@@ -4,7 +4,6 @@ import { Chapter1 } from './component/chapter1/Chapter1';
 import StoryTemplate from './component/StoryTemplate';
 
 function App() {
-  
   return (
     <div className="App">
       {/* <Chapter0></Chapter0> */}
