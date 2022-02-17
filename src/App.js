@@ -1,5 +1,6 @@
 import './App.css';
 import Chapter0 from './component/chapter0/Chapter0';
+import { Chapter1 } from './component/chapter1/Chapter1';
 import StoryTemplate from './component/StoryTemplate';
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
   return (
     <div className="App">
       {/* <Chapter0></Chapter0> */}
-      <StoryTemplate></StoryTemplate>
+      {/* <StoryTemplate></StoryTemplate> */}
+      <Chapter1></Chapter1>
       
     </div>
   );

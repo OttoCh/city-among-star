@@ -25,8 +25,8 @@ const NarrativeMain = styled(motion.div)`
     position: absolute;
     display: flex;
     justify-content: center;
-    right: ${passed => passed.align === 'left' ? 'auto' : 0};
-    left: ${passed => passed.align === 'right' ? 'auto' : 0};
+    right: ${passed => passed.dialogalign === 'left' ? 'auto' : 0};
+    left: ${passed => passed.dialogalign === 'right' ? 'auto' : 0};
     top: 40%;
     padding: auto;
     width: 50%;
@@ -53,18 +53,17 @@ function StoryTemplate(props) {
     })
 
     return(
-        <div className='main'>
-        <BackgroundMain
-            bgimage={"url(" + D1L1 + ")"}
+        <BackgroundMain 
+            onClick={props.onNextDialog}
+            bgimage={"url(" + props.background + ")"}
             animate={controls}
         >
             <NarrativeMain
-                align={"right"}
+                dialogalign={props.dialogAlign}
             >
-                {Dialogue.D1[0]}
+                {props.dialog}
             </NarrativeMain>
         </BackgroundMain>
-        </div>
     )
 
 }
