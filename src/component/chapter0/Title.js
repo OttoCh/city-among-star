@@ -20,13 +20,14 @@ function Title(props) {
     const controls = useAnimation();
 
     const sequence = async() => {
-        return await controls.start({
+        await controls.start({
             opacity: 1,
             transition: {
                 delay: props.timer + 2,
                 duration: 2
             }
         })
+        await props.nextChapter();
     }
 
     useEffect(() => {

@@ -38,6 +38,7 @@ function StoryTemplate(props) {
 
     const controls = useAnimation();
 
+    //https://codesandbox.io/s/framer-motion-issue-forked-6no3o?file=/src/App.js
     const variants = {
         hidden: {
             opacity: 0,
@@ -83,7 +84,6 @@ function StoryTemplate(props) {
                     variants={variants}
                     initials="hidden"
                     animate= {props.activeDialog === i ? "visible" : "hidden"}
-                    // animate="visible"
                     key={i + "sam"}
                 >
                     {text}

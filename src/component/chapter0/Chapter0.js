@@ -91,6 +91,7 @@ export class Chapter0 extends Component {
             <Title
                 bgImage={this.state.titleImage}
                 timer={this.state.titleTimer}
+                nextChapter={this.props.nextChapter}
             >
             </Title>
             </div>

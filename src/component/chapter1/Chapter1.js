@@ -23,7 +23,7 @@ export class Chapter1 extends Component {
         })
 
         if(newActiveDialog >= this.state.dialog.length) {
-            this.changeChapter();
+            this.props.nextChapter();
         }
     }
 
@@ -46,3 +46,5 @@ export class Chapter1 extends Component {
         )
     }
 }
+
+export default Chapter1;
